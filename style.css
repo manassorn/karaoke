@@ -82,7 +82,8 @@ header {
   cursor: pointer;
   text-align: left;
 }
-.search > .suggestion > .item:hover {
+.search > .suggestion > .item:hover,
+.search > .suggestion > .item:active {
   background: #55acee;
   color: white;
 }
@@ -107,7 +108,8 @@ header {
   font-size: 90%;
   font-style: italic;
 }
-.search > .suggestion > .item:hover > .song-id {
+.search > .suggestion > .item:hover > .song-id,
+.search > .suggestion > .item:active > .song-id {
   color: white;
 }
 
