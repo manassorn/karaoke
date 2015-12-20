@@ -85,7 +85,7 @@ var searchBox = {
   },
   gotoTop: function() {
     var top = document.getElementById('search').offsetTop;
-    util.scrollTo(top, 250);
+    util.scrollTo(top, 150);
   },
 };
 var suggestion = {
