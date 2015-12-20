@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by anonymous (http://jsbin.com/kokuyajaha/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <title>Smile Land Karaoke</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style id="jsbin-css">
+/**** table ****/
+table {
+  width: 70%;
+  max-width: 525px;
+  margin: 0px auto;
+  border-collapse: collapse;
+  
+  box-shadow: 0px 0px 0px 1px green;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+table td {
+  /* height: 32px; */
+  background: #fff;
+  border-bottom: 1px solid #e8e6da;
+  padding: 8px;
+}
+
+
+/**** table playlist ****/
+.playlist td:first-child {
+  width: 100px;
+}
+.playlist thead td.artist {
+  background-color: #b9ccfa;
+  font-size: 110%;
+  padding: 12px 8px;
+  padding-bottom: 12px;
+}
+
+/**** header ****/
+header {
+  padding: 12px 0;
+  padding-top: 24px;
+  border-bottom: 1px solid #ededed;
+  text-align: center;
+}
+#logo {
+  width: 40%;
+  max-width: 384px;
+}
+
+/**** search ****/
+.search {
+  position: relative;
+  padding-top: 8px;
+}
+.search input {
+  width: 70%;
+  max-width: 525px;
+  height: 25px;
+  /*padding-right: 50px;*/
+}
+
+.search > .suggestion {
+  position: absolute;
+  background-color: #fff;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px 1px green;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  
+  width: 70%;
+  max-width: 525px;
+  top: 125%;
+  left:0;
+  right:0;
+  margin: 0px auto;
+  margin-bottom: 60px;
+}
+.search > .suggestion > .item {
+  padding: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+.search > .suggestion > .item:hover {
+  background: #55acee;
+  color: white;
+}
+.search > .suggestion > .item + .item{
+  border-top: 1px solid #ccd6dd;
+}
+
+/**** search-song-item ****/
+.search > .suggestion > .item > img {
+  vertical-align: middle;
+  height: 14px;
+  margin-right: 8px;
+}
+.search > .suggestion > .item > .artist {
+  color: #999;
+  font-size: 90%;
+  font-style: italic;
+  float: right;
+}
+.search > .suggestion > .item > .song-id {
+  color: #999;
+  font-size: 90%;
+  font-style: italic;
+}
+.search > .suggestion > .item:hover > .song-id {
+  color: white;
+}
+
+/**** song-list ****/
+body {
+  margin: 0;
+  margin-bottom: 60px;
+  background-color: #f5f5f5;
+  min-height: 800px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #aaa;
+  width: 100%;
+  height: 42px;
+  padding: 3px;
+  
+  text-align: center;
+}
+.fade {
+  opacity:    0.5; 
+  background: #000; 
+  width:      100%;
+  height:     100%; 
+  z-index:    10;
+  top:        0; 
+  left:       0; 
+  position:   fixed; 
+}
+
+/**** clearable ****/
+.clearable{
+  background: #fff url(http://i.stack.imgur.com/mJotv.gif) no-repeat right -10px center;
+  border: 1px solid #999;
+  padding: 3px 18px 3px 4px;
+  border-radius: 3px;
+  transition: background 0.4s;
+}
+.clearable.x  { background-position: right 5px center; }
+
+/**** spinner ****/
+.spinner {
+  width:      100%;
+  height:     100%; 
+  z-index:    10;
+  top:        0; 
+  left:       0; 
+  position:   fixed; 
+  
+  margin: 100px auto 0;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+</style>
+</head>
+<body>
+<!-- Start your code here -->
+  <header>
+    <div>
+      <img id="logo" src="https://www.google.com/logos/2009/loy_krathong09.gif" />
+    </div>
+    <div id="search" class="search">
+      <div>
+        <input id="search-box" type="text" placeholder="ชื่อเพลง หรือ นักรัอง" class="clearable x"/>
+        <!--button>ค้นหา</button-->
+      </div>
+      <div id="suggest-box" class="suggestion">
+        <!--div class="item search-song-item">
+          <img src="http://goo.gl/lQVYgK" />
+          ลาบานูน
+        </div>
+        <div class="item search-song-item">
+          <img src="http://goo.gl/xT2Pve" />
+          เชือกวิเศษ<span class="artist"> - ลาบานูน</span> <span class="song-id">27768</span>
+        </div-->
+      </div>
+    </div>
+  </header>
+ 
+  <table class="playlist">
+    <thead>
+      <tr><td colspan="2" id="artist-name" class="artist">เพลงแนะนำ</td></tr>
+    </thead>
+    <tbody id="song-list">
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+      <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    ads
+  </footer>
+
+  <div id="fade" class="fade" style="display: none">
+  </div>
+  <div id="spinner" class="spinner" style="display: none">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+<script id="jsbin-javascript">
+window.onload = function() {
+  init.songDb(init.artistList);
+  init.preloadImage();
+  init.searching();
+};
+var init = {
+  songDb: function(callback) {
+    jukebox.init(callback);
+  },
+  artistList: function() {
+    window.artistList = songDb.filter(function(item) {
+      return item.length === 2;
+    }).map(function(item) {
+      return item[0];
+    });
+  },
+  preloadImage: function() {
+    var srcs = [
+      "http://downloads.munin-monitoring.org/assets/glyphicons_free/glyphicons/png/glyphicons-18-music.png",
+      "http://downloads.munin-monitoring.org/assets/glyphicons_free/glyphicons/png/glyphicons-4-user.png"
+    ];
+    srcs.forEach(function(url) {
+      var img = new Image();
+      img.src = url;
+    });
+  },
+  searching: function() {
+    searchBox.init();
+  }
+};
+
+var jukebox = {
+  init: function(callback) {
+    var that = this;
+    this.load(function(data) {
+      data = that.transform(data);
+      window.songDb = data;
+      callback();
+      util.hideSpinner();
+    });
+  },
+  load: function(callback) {
+    var r = new XMLHttpRequest(); 
+    r.open("POST", "songdb.txt", true);
+    r.onreadystatechange = function () {
+      if (r.readyState != 4 || r.status != 200) return; 
+      callback(r.responseText);
+    };
+    r.send("");
+  },
+  transform: function(data) {
+    var output = [];
+    data.split('\n').forEach(function(line) {
+      var array = line.split(',');
+      output.push(array);
+    });
+    return output;
+  },
+  findSongByArtist: function(id) {
+    return songDb.filter(function(item) {
+      return item[1] == id && item.length === 3;
+    });
+  }
+};
+var searchBox = {
+  init: function() {
+    window.suggestBox = document.getElementById('suggest-box');
+    this.element().onkeyup = function() {
+      if(searchBox.val().length < 1) {
+        suggestBox.style.display = 'none';
+      } else {
+        suggestBox.style.display = 'block';
+        suggestion.suggestWith(searchBox.val());
+      }
+    };
+    this.element().onfocus = function() {
+      searchBox.gotoTop();
+    };
+  },
+  element: function() {
+    return document.getElementById('search-box');
+  },
+  val: function() {
+    return this.element().value;
+  },
+  gotoTop: function() {
+    var top = document.getElementById('search').offsetTop;
+    util.scrollTo(top, 350);
+  },
+};
+var suggestion = {
+  suggestWith: function(str) {
+    var items = this.indexOfSearch(str);
+    var suggestItems = this.createSuggestItem(items, str);
+    
+    var suggestBox = document.getElementById('suggest-box');
+    suggestBox.innerHTML = suggestItems.join('');
+  },
+  indexOfSearch: function(str) {
+    str = str.toLowerCase();
+    // return songDb.filter(function(item) {
+      // return item[0].toLowerCase().indexOf(str) >= 0;
+    // });
+    var len = str.length;
+    return songDb.reduce(function(output, item) {
+      var index = item[0].toLowerCase().indexOf(str);
+      if(index >= 0) {
+        output.push({item: item, index: index, len: len});
+      }
+      return output;
+    }, []);
+  },
+  createSuggestItem: function(sugestList, str) {
+    return sugestList.map(function(suggest) {
+      var item = suggest.item,
+        index = suggest.index,
+        len = suggest.len;
+      if(item.length === 2) {
+        return suggestion.createArtistItem(item[1], item[0], index, len);
+      } else {
+        var artist = window.artistList[item[1]];
+        return suggestion.createSongItem(item[2], item[0], item[1], artist, index, len);
+      }
+    });
+  },
+  createArtistItem: function(id, artist, index, len) {
+    return '<div class="item search-song-item" artist-id="' + id + '" onclick="onClickSuggestItem(this)">' + 
+      '<img src="http://goo.gl/lQVYgK" /><a href="#">' + 
+      this.highlight(artist, index, len) + 
+      '</a></div>';
+  },
+  createSongItem: function(songId, song, artistId, artist, index, len) {
+    return '<div class="item search-song-item" artist-id="' + artistId + '" song-id="' + songId + '" onclick="onClickSuggestItem(this)">' + 
+      '<img src="http://goo.gl/xT2Pve" />' + 
+      '<span class="song-id">' + songId + ' - </span>' +
+      this.highlight(song, index, len) + 
+      '<span class="artist"><a href="#">' + artist + '</a></span>' +
+      '</div>';
+  },
+  highlight: function(str, index, len) {
+    return str.substring(0, index) +
+      '<strong>' + str.substring(index, index + len) + '</strong>' +
+      str.substring(index + len);
+  }
+};
+function onClickSuggestItem(ele) {
+  suggestBox.style.display = 'none';
+  var songId = ele.getAttribute('song-id');
+  var artistId = parseInt(ele.getAttribute('artist-id'), 10);
+  var songs = jukebox.findSongByArtist(artistId);
+  playlist.setArtistName(artistList[artistId]);
+  playlist.setSongList(songs);
+}
+var playlist = {
+  setArtistName: function(artistName) {
+    document.getElementById('artist-name').innerHTML = artistName;  
+  },
+  setSongList: function(songs) {
+    songs = this.createSongList(songs);
+    document.getElementById('song-list').innerHTML = songs;
+  },
+  createSongList: function(songs) {
+    return songs.map(function(song) {
+      return '<tr>' +
+        '<td>' + song[2] + '</td>' +
+        '<td>' + song[0] + '</td>' +
+        '</tr>';
+    }).join('');
+  }
+};
+
+var util = {
+  scrollTo: function(y, scrollDuration) {
+    var scrollHeight = window.scrollY - y,
+          scrollStep = Math.PI / ( scrollDuration / 15 ),
+          cosParameter = scrollHeight / 2,
+          scrollY = window.scrollY;
+    var   scrollCount = 0,
+          scrollMargin;
+    requestAnimationFrame(step);        
+    function step () {
+      setTimeout(function() {
+        if ( window.scrollY < y - 1 || window.scrollY > y + 1 ) {
+          scrollCount = scrollCount + 1;  
+          scrollMargin = cosParameter - cosParameter * Math.cos( scrollCount * scrollStep );
+          window.scrollTo( 0, ( scrollY - scrollMargin ) );
+          requestAnimationFrame(step);
+        }
+      }, 15 );
+    }
+  },
+  hideSpinner: function() {
+    document.getElementById('fade').style.display = 'none';
+    document.getElementById('spinner').style.display = 'none';
+  }
+};
+</script>
+</body>
+</html>
