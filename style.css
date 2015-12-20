@@ -50,6 +50,10 @@ header {
   width: 90%;
   max-width: 525px;
   font-size: 16px;
+  
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
   /*height: 25px;*/
   /*padding-right: 50px;*/
 }
@@ -139,8 +143,8 @@ footer {
 .clearable{
   background: #fff url(http://i.stack.imgur.com/mJotv.gif) no-repeat right -10px center;
   border: 1px solid #999;
-  /*padding: 3px 18px 3px 4px;*/
-  padding: 9px 4px 9px 4px;
+  padding: 9px 18px 9px 4px;
+  /*padding: 9px 4px 9px 4px;*/
   border-radius: 3px;
   transition: background 0.4s;
 }
