@@ -43,7 +43,11 @@ var jukebox = {
     var r = new XMLHttpRequest(); 
     r.open("GET", "songdb.txt", true);
     r.onreadystatechange = function () {
-      if (r.readyState != 4 || r.status != 200) return; 
+      if (r.readyState != 4 || r.status != 200) {
+        alert(r.readyState);
+        alert(r.status);
+        return; 
+      }
       callback(r.responseText);
     };
     r.send("");
