@@ -1,6 +1,6 @@
 /**** table ****/
 table {
-  width: 85%;
+  width: 90%;
   max-width: 525px;
   margin: 0px auto;
   border-collapse: collapse;
@@ -47,7 +47,7 @@ header {
   padding-top: 8px;
 }
 .search input {
-  width: 85%;
+  width: 90%;
   max-width: 525px;
   height: 25px;
   /*padding-right: 50px;*/
@@ -64,7 +64,7 @@ header {
   -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
   
-  width: 85%;
+  width: 90%;
   max-width: 525px;
   top: 125%;
   left:0;

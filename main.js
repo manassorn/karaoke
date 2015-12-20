@@ -171,7 +171,7 @@ var playlist = {
 
 var util = {
   scrollTo: function(y, scrollDuration) {
-    const scrollHeight = window.scrollY - y,
+    var scrollHeight = window.scrollY - y,
           scrollStep = Math.PI / ( scrollDuration / 15 ),
           cosParameter = scrollHeight / 2,
           scrollY = window.scrollY;
