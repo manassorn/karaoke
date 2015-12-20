@@ -49,6 +49,7 @@ header {
 .search input {
   width: 90%;
   max-width: 525px;
+  font-size: 16px;
   /*height: 25px;*/
   /*padding-right: 50px;*/
 }
@@ -138,7 +139,8 @@ footer {
 .clearable{
   background: #fff url(http://i.stack.imgur.com/mJotv.gif) no-repeat right -10px center;
   border: 1px solid #999;
-  padding: 3px 18px 3px 4px;
+  /*padding: 3px 18px 3px 4px;*/
+  padding: 7px 4px 7px 4px;
   border-radius: 3px;
   transition: background 0.4s;
 }
