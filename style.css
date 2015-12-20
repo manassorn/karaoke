@@ -37,7 +37,7 @@ header {
   text-align: center;
 }
 #logo {
-  width: 40%;
+  width: 60%;
   max-width: 384px;
 }
 
@@ -49,7 +49,7 @@ header {
 .search input {
   width: 90%;
   max-width: 525px;
-  height: 25px;
+  /*height: 25px;*/
   /*padding-right: 50px;*/
 }
 
