@@ -41,7 +41,7 @@ var jukebox = {
   },
   load: function(callback) {
     var r = new XMLHttpRequest(); 
-    r.open("POST", "songdb.txt", true);
+    r.open("GET", "songdb.txt", true);
     r.onreadystatechange = function () {
       if (r.readyState != 4 || r.status != 200) return; 
       callback(r.responseText);
