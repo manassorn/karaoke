@@ -44,8 +44,9 @@ var jukebox = {
     r.open("GET", "songdb.txt", true);
     r.onreadystatechange = function () {
       if (r.readyState != 4 || r.status != 200) {
-        alert('>' + r.readyState);
-        alert('>' + r.status);
+        alert('>>' + r.readyState);
+        alert('>>' + r.status);
+        alert('>>' + r.statusText);
         return; 
       }
       callback(r.responseText);
