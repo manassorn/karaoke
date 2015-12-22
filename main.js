@@ -40,18 +40,18 @@ var jukebox = {
     });
   },
   load: function(callback) {
-    // var r = new XMLHttpRequest(); 
-    // r.open("GET", "songdb.txt", true);
-    // r.onreadystatechange = function () {
-      // if (r.readyState != 4 || r.status != 200) {
-        // return; 
-      // }
-      // callback(r.responseText);
-    // };
-    // r.send();
+    var r = new XMLHttpRequest(); 
+    r.open("GET", "songdb.txt", true);
+    r.onreadystatechange = function () {
+      if (r.readyState != 4 || r.status != 200) {
+        return; 
+      }
+      callback(r.responseText);
+    };
+    r.send();
     
     //workaround
-    callback(songdbtxt);
+    // callback(songdbtxt);
   },
   transform: function(data) {
     var output = [];
@@ -200,4 +200,20 @@ var util = {
   }
 };
 
+var feedback = {
+  element: function() {
+    return document.getElementById('feedback');
+  },
+  backdropElement: function() {
+    return document.getElementById('feedback-backdrop');
+  },
+  openModal: function() {
+    this.backdropElement().style.display = 'block';
+    this.element().style.display = 'block';
+  },
+  closeModal: function() {
+    this.backdropElement().style.display = 'none';
+    this.element().style.display = 'none';
+  }
+};
 var songdbtxt = "ลาบานูน,0\nGetsunova,1\nเชือกวิเศษ,0,27822\nเท่าเดิม,0,22829\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912\nไกลแค่ไหนคือใกล้,1,12912";

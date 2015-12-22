@@ -31,8 +31,8 @@
       </div>
     </div>
   </header>
- 
-  <table class="playlist">
+  
+  <table class="playlist center-section">
     <thead>
       <tr><td colspan="2" id="artist-name" class="artist">เพลงแนะนำ</td></tr>
     </thead>
@@ -59,10 +59,32 @@
       <tr> <td>12345</td><td>รักเธอชั่วนิรันดร์</td></tr>
     </tbody>
   </table>
+  
+  <div class="center-section bottom-nav">
+    <a href="javascript:feedback.openModal();" style="text-align: right">คำแนะนำ</a>
+  </div>
 
   <footer>
     ads
   </footer>
+  
+  <div id="feedback" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">คำแนะนำ
+        <button type="button" class="close" onclick="javascript:feedback.closeModal();">×</button>
+      </div>
+      <div class="modal-body">
+        <span>คำแนะนำ</span><br/>
+        <textarea style="width: 90%; height: 100px; resize: none;" maxlength="1000"></textarea><br/>
+        <br/>
+        <span>ชื่อ</span><br/>
+        <input /><br/>
+        <br/>
+        <button>ตกลง</button>&nbsp;&nbsp;&nbsp;<a href="javascript:feedback.closeModal();" style="font-size: 80%;">ยกเลิก</a>
+      </div>
+    </div>
+  </div>
+  <div id="feedback-backdrop" class="modal-backdrop"></div>
 
   <div id="fade" class="fade" style="display: none">
   </div>

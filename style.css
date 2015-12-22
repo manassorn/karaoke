@@ -1,8 +1,14 @@
-/**** table ****/
-table {
+.center-section {
   width: 90%;
   max-width: 525px;
   margin: 0px auto;
+}
+.bottom-nav {
+  margin-top: 16px;
+  text-align: right;
+}
+/**** table ****/
+table {
   border-collapse: collapse;
   
   box-shadow: 0px 0px 0px 1px green;
@@ -199,4 +205,105 @@ footer {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
+}
+
+/** modal **/
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+  display: none;
+  
+  filter: alpha(opacity=0.5);
+  opacity: 0.5;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  display: none;
+}
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  
+  width: 70%;
+  margin: 30px auto;
+  max-width: 525px;
+}
+.modal-header {
+  background: #b9ccfa;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 12px 8px;
+  
+}
+.modal-body {
+  padding: 12px 18px;
+  
+}
+
+/** button **/
+button {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.modal-header .close {
+    margin-top: -2px;
+}
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+}
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
 }
