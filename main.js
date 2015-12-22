@@ -40,15 +40,15 @@ var jukebox = {
     });
   },
   load: function(callback) {
-    var r = new XMLHttpRequest(); 
-    r.open("GET", "songdb.txt", true);
-    r.onreadystatechange = function () {
-      if (r.readyState != 4 || r.status != 200) {
-        return; 
-      }
-      callback(r.responseText);
-    };
-    r.send();
+    // var r = new XMLHttpRequest(); 
+    // r.open("GET", "songdb.txt", true);
+    // r.onreadystatechange = function () {
+      // if (r.readyState != 4 || r.status != 200) {
+        // return; 
+      // }
+      // callback(r.responseText);
+    // };
+    // r.send();
     
     //workaround
     callback(songdbtxt);
@@ -130,13 +130,13 @@ var suggestion = {
   },
   createArtistItem: function(id, artist, index, len) {
     return '<div class="item search-song-item" artist-id="' + id + '" onclick="onClickSuggestItem(this)">' + 
-      '<img src="http://goo.gl/lQVYgK" /><a href="#">' + 
+      '<img src="http://downloads.munin-monitoring.org/assets/glyphicons_free/glyphicons/png/glyphicons-4-user.png" /><a href="#">' + 
       this.highlight(artist, index, len) + 
       '</a></div>';
   },
   createSongItem: function(songId, song, artistId, artist, index, len) {
     return '<div class="item search-song-item" artist-id="' + artistId + '" song-id="' + songId + '" onclick="onClickSuggestItem(this)">' + 
-      '<img src="http://goo.gl/xT2Pve" />' + 
+      '<img src="ttp://downloads.munin-monitoring.org/assets/glyphicons_free/glyphicons/png/glyphicons-18-music.png" />' + 
       '<span class="song-id">' + songId + ' - </span>' +
       this.highlight(song, index, len) + 
       '<span class="artist"><a href="#">' + artist + '</a></span>' +
