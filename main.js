@@ -136,7 +136,7 @@ var suggestion = {
   },
   createSongItem: function(songId, song, artistId, artist, index, len) {
     return '<div class="item search-song-item" artist-id="' + artistId + '" song-id="' + songId + '" onclick="onClickSuggestItem(this)">' + 
-      '<img src="ttp://downloads.munin-monitoring.org/assets/glyphicons_free/glyphicons/png/glyphicons-18-music.png" />' + 
+      '<img src="http://downloads.munin-monitoring.org/assets/glyphicons_free/glyphicons/png/glyphicons-18-music.png" />' + 
       '<span class="song-id">' + songId + ' - </span>' +
       this.highlight(song, index, len) + 
       '<span class="artist"><a href="#">' + artist + '</a></span>' +
